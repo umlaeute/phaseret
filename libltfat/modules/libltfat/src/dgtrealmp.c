@@ -289,6 +289,9 @@ LTFAT_API int
 LTFAT_NAME(dgtrealmp_reset)(LTFAT_NAME(dgtrealmp_state)* p, const LTFAT_REAL* f)
 {
     int status = LTFATERR_SUCCESS;
+    LTFAT_REAL initcmax;
+    kpoint origpos;
+
 
     LTFAT_NAME(dgtrealmpiter_state)* istate = NULL;
 
@@ -329,9 +332,8 @@ LTFAT_NAME(dgtrealmp_reset)(LTFAT_NAME(dgtrealmp_state)* p, const LTFAT_REAL* f)
                 p->M2[k] * p->N[k] * sizeof * p->iterstate->suppind[k] );
     }
 
-    kpoint origpos;
     LTFAT_NAME(dgtrealmp_execute_findmaxatom)(p, &origpos);
-    LTFAT_REAL initcmax = ltfat_norm(istate->c[PTOI(origpos)]);
+    initcmax = ltfat_norm(istate->c[PTOI(origpos)]);
 
     CHECK( LTFAT_DGTREALMP_STATUS_EMPTY, initcmax > 0.0, " Sanity check (zero max init in prod)");
     p->params->atprodreltoladj = pow(10.0, p->params->atprodreltoldb / 10.0) * initcmax;

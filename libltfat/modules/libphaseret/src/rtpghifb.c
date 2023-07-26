@@ -3,6 +3,7 @@
 #include "phaseret/utils.h"
 #include "float.h"
 #include "rtpghifb_private.h"
+#include <math.h>
 
 #define NORTHFROMW(w,M,N) ((((w) + 1) % (M)) + (w) - (w) % (M))
 #define SOUTHFROMW(w,M,N) (((w) - 1 + (M)) % (M) + (w) - (w) % (M))

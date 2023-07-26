@@ -3,7 +3,7 @@
 #include "phaseret/utils.h"
 #include "float.h"
 #include "rtpghi_private.h"
-
+#include <math.h>
 
 PHASERET_API int
 PHASERET_NAME(rtpghi_set_causal)(PHASERET_NAME(rtpghi_state)* p, int do_causal)
