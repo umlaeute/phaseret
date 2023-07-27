@@ -13,7 +13,12 @@ endif()
 
 set(CMAKE_BUILD_TYPE Release)
 
-option(CMAKE_BUILD_RPATH_USE_ORIGIN "Whether to use relative paths for the build 'RPATH'." ON)
+
+if (APPLE)
+  set(CMAKE_INSTALL_NAME_DIR "@loader_path" CACHE STRING "Directory name for installed targets on Apple platforms." )
+else()
+  option(CMAKE_BUILD_RPATH_USE_ORIGIN "Whether to use relative paths for the build 'RPATH' (Linux only)." ON)
+endif()
 
 option(BUILD_SHARED_LIBS
   "Build .so/.dll" ON)
