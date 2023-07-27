@@ -63,3 +63,12 @@ endif(WIN32)
 target_link_libraries(phaseret  ltfat)
 target_link_libraries(phaseretf ltfatf)
 target_link_libraries(phaseretd ltfatd)
+
+target_include_directories(phaseret PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include/>
+  $<INSTALL_INTERFACE:include/>
+)
+set_target_properties(phaseret PROPERTIES PUBLIC_HEADER ../include/phaseret.h)
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../include/phaseret/ DESTINATION include/phaseret
+        FILES_MATCHING PATTERN "*.h")
+install(TARGETS phaseret phaseretf phaseretd)

@@ -109,3 +109,12 @@ endif(WIN32)
 target_link_libraries(ltfat  ${LAPACK_LIB} ${BLAS_LIB} ${FFTW3_LIB}  ${FFTW3F_LIB} ${LIBS})
 target_link_libraries(ltfatf ${LAPACK_LIB} ${BLAS_LIB} ${FFTW3F_LIB} ${LIBS})
 target_link_libraries(ltfatd ${LAPACK_LIB} ${BLAS_LIB} ${FFTW3_LIB}  ${LIBS})
+
+target_include_directories(ltfat PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include/>
+  $<INSTALL_INTERFACE:include/>
+)
+set_target_properties(ltfat PROPERTIES PUBLIC_HEADER ../include/ltfat.h)
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../include/ltfat/ DESTINATION include/ltfat
+        FILES_MATCHING PATTERN "*.h")
+install(TARGETS ltfat ltfatf ltfatd)
