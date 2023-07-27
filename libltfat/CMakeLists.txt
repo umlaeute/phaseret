@@ -1,7 +1,13 @@
 cmake_minimum_required (VERSION 3.11)
 project (libltfat C CXX)
 
+# JMZ 2023-07-27
+# - drop '-rpath,"$ORIGIN"' from the linker flags
+#   (use CMAKE_BUILD_RPATH_USE_ORIGIN=ON instead)
+
 set(CMAKE_BUILD_TYPE Release)
+
+option(CMAKE_BUILD_RPATH_USE_ORIGIN "Whether to use relative paths for the build 'RPATH'." ON)
 
 option(BUILD_SHARED_LIBS
   "Build .so/.dll" ON)
@@ -50,7 +56,7 @@ if (MSVC)
 else (MSVC)
   SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra")
   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
-  SET(CMAKE_SHARED_LINKER_FLAGS "-Wl,--no-undefined -Wl,-rpath,$ORIGIN")
+  SET(CMAKE_SHARED_LINKER_FLAGS "-Wl,--no-undefined")
   SET(LIBS m)
   if(CMAKE_CROSSCOMPILING)
     SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -static-libgcc")
@@ -70,7 +76,7 @@ if (MSVC)
   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /D_HAS_EXCEPTIONS=0 /EHsc")
 else (MSVC)
   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions -fno-rtti")
-  SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--no-undefined -Wl,-rpath,$ORIGIN")
+  SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--no-undefined")
   SET(LIBS m)
 endif(MSVC)
 
