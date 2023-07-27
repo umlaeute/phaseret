@@ -11,8 +11,9 @@ if (${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.18.0")
   include(CheckLinkerFlag)
 endif()
 
-set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_BUILD_TYPE "Release")
 
+set(CMAKE_VERBOSE_MAKEFILE ON)
 
 if (APPLE)
   set(CMAKE_INSTALL_NAME_DIR "@loader_path" CACHE STRING "Directory name for installed targets on Apple platforms." )
