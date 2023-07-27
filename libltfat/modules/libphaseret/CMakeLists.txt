@@ -2,14 +2,14 @@ cmake_minimum_required (VERSION 2.8)
 project (libphaseret C CXX)
 
 option(NOBLASLAPACK
-    "Disable BLAS and LAPACK dependency. Must be used if LTFAT was compiled without BLAS
+  "Disable BLAS and LAPACK dependency. Must be used if LTFAT was compiled without BLAS
     and LAPACK dependency" OFF)
 
 if (MSVC)
-    set(USECPP 1)
+  set(USECPP 1)
 else (MSVC)
-    option(USECPP
-        "Use C++ compiler instead of C compiler" OFF)
+  option(USECPP
+    "Use C++ compiler instead of C compiler" OFF)
 endif (MSVC)
 
 
@@ -36,4 +36,3 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/thirdparty)
 include_directories(${LTFAT_INCLUDE})
 
 add_subdirectory(src)
-
