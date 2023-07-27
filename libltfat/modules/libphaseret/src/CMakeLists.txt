@@ -54,7 +54,7 @@ add_library(phaseretf
 
 if (WIN32)
   if(BUILD_SHARED_LIBS)
-    set_target_properties(phaseret PROPERTIES IMPORT_SUFFIX ".dll.lib")
+    set_target_properties(phaseret  PROPERTIES IMPORT_SUFFIX ".dll.lib")
     set_target_properties(phaseretf PROPERTIES IMPORT_SUFFIX ".dll.lib")
     set_target_properties(phaseretd PROPERTIES IMPORT_SUFFIX ".dll.lib")
   endif(BUILD_SHARED_LIBS)
