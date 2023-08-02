@@ -44,10 +44,10 @@ typedef struct PHASERET_NAME(rtpghiupdate_plan) PHASERET_NAME(rtpghiupdate_plan)
 
 /** Create a RTPGHI state.
  *
- * \param[in]     gamma        Window-specific constant Cg*gl^2
  * \param[in]     W            Number of channels
  * \param[in]     a            Hop size
  * \param[in]     M            Number of frequency channels (FFT length)
+ * \param[in]     gamma        Window-specific constant Cg*gl^2
  * \param[in]     tol          Relative coefficient tolerance.
  * \param[in]     do_causal    Zero delay (1) or 1 frame delay (0) version of the alg.
  * \param[out]    p            RTPGHI state
