@@ -11,7 +11,7 @@ if (${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.18.0")
   include(CheckLinkerFlag)
 endif()
 
-set(CMAKE_BUILD_TYPE "Release")
+#set(CMAKE_BUILD_TYPE "Release")
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
